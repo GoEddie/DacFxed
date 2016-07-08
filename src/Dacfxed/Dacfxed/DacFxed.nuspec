@@ -8,6 +8,11 @@
     <description>Module to call DacServices Deploy without the hassle of worrying about the DacFx dependencies</description>
   </metadata>
   <files>
-    <file src="bin\Release\*.*" target="lib" />
+    <file src="bin\Release\DacFxed.dll" target="lib" />
+	<file src="bin\Release\DacFxed.psd1" target="lib" />
   </files>
+  <dependencies>
+    <package id="Microsoft.PowerShell.5.ReferenceAssemblies" version="1.0.0" targetFramework="net452" />
+	<package id="Microsoft.SqlServer.DacFx.x64" version="130.3370.2" targetFramework="net452" />
+  </dependencies> 
 </package>
