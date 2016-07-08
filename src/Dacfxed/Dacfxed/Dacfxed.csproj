@@ -7,8 +7,8 @@
     <ProjectGuid>{B861D270-9AAB-4446-B5FD-1302B78B7B67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dacfxed</RootNamespace>
-    <AssemblyName>Dacfxed</AssemblyName>
+    <RootNamespace>DacFxed</RootNamespace>
+    <AssemblyName>DacFxed</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -73,6 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DacFxed.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

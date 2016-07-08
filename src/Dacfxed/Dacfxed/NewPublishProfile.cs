@@ -1,7 +1,7 @@
 using System.IO;
 using System.Management.Automation;
 
-namespace Dacfxed
+namespace DacFxed
 {
     [Cmdlet(VerbsCommon.New, "PublishProfile")]
     public class NewPublishProfile : Cmdlet

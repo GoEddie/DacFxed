@@ -4,7 +4,7 @@ using System.Text;
 using System.Management.Automation;
 using Microsoft.SqlServer.Dac;
 
-namespace Dacfxed
+namespace DacFxed
 {
     [Cmdlet(VerbsData.Publish, "Database")]
     public class PublishDatabase : Cmdlet
