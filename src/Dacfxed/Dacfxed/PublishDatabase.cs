@@ -21,7 +21,7 @@ namespace DacFxed
         bool _error = false;
         private readonly StringBuilder _messages = new StringBuilder();
 
-        protected override void BeginProcessing()
+        protected override void BeginProcessing()   
         {
             WriteVerbose("Validating dacpac path");
 

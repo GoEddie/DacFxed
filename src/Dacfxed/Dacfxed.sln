@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DacFxed", "Dacfxed\DacFxed.csproj", "{B861D270-9AAB-4446-B5FD-1302B78B7B67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DacFxed.Tests", "..\DacFxed.Tests\DacFxed.Tests.csproj", "{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".test", ".test", "{890DE3FA-E128-40AC-BECE-2BD99D74FE0E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TestDacPac", "..\TestDacPac\TestDacPac.sqlproj", "{580815D6-874A-414A-ADDA-011D39CC8F67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +21,22 @@ Global
 		{B861D270-9AAB-4446-B5FD-1302B78B7B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B861D270-9AAB-4446-B5FD-1302B78B7B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B861D270-9AAB-4446-B5FD-1302B78B7B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580815D6-874A-414A-ADDA-011D39CC8F67}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FEEA52F7-6CB5-4BF2-9079-DDBECEC50918} = {890DE3FA-E128-40AC-BECE-2BD99D74FE0E}
+		{580815D6-874A-414A-ADDA-011D39CC8F67} = {890DE3FA-E128-40AC-BECE-2BD99D74FE0E}
 	EndGlobalSection
 EndGlobal
