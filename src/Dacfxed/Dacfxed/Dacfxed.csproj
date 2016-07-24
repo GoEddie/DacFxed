@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DacFxLoadProxy">
-      <HintPath>..\..\DacFxLoadProxy\bin\Debug\DacFxLoadProxy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -63,6 +60,12 @@
     <Content Include="Microsoft.VisualStudio.Data.Tools.Package.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DacFxLoadProxy\DacFxLoadProxy.csproj">
+      <Project>{6f2996c4-b139-4b87-a022-f6369ef4964f}</Project>
+      <Name>DacFxLoadProxy</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
