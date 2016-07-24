@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B861D270-9AAB-4446-B5FD-1302B78B7B67}</ProjectGuid>
+    <ProjectGuid>{6F2996C4-B139-4B87-A022-F6369EF4964F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DacFxed</RootNamespace>
-    <AssemblyName>DacFxed</AssemblyName>
+    <RootNamespace>DacFxLoadProxy</RootNamespace>
+    <AssemblyName>DacFxLoadProxy</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,15 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DacFxLoadProxy">
-      <HintPath>..\..\DacFxLoadProxy\bin\Debug\DacFxLoadProxy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.PowerShell.5.ReferenceAssemblies.1.0.0\lib\net4\System.Management.Automation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,21 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewPublishProfile.cs" />
-    <Compile Include="PublishDatabase.cs" />
+    <Compile Include="DacFxedModuleLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DacFxed.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-    <None Include="UpdateModuleVersion.ps1" />
+    <ProjectReference Include="..\DacFxedProxy\DacFxedProxy.csproj">
+      <Project>{BA4DF731-37C4-485F-BD51-51B9F292FEBC}</Project>
+      <Name>DacFxedProxy</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.VisualStudio.Data.Tools.Package.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
