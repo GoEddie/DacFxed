@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace DacFxed.Tests
 {
     [TestFixture]
-    public class Can_Deploy_Dacpac
+    public class CanDeployDacpac
     {
         
         public void Init()
