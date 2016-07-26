@@ -80,23 +80,38 @@ namespace DacFxed
 
         protected override void ProcessRecord()
         {
-            WriteVerbose("About to publish dacpac...");
-
-            if (_error)
+            try
             {
-                WriteVerbose("About to publish dacpac...failed see previous error(s)");
-                return;
-            }
+                WriteVerbose("About to publish dacpac...");
 
-            if (!string.IsNullOrEmpty(ScriptSavePath))
+                if (_error)
+                {
+                    WriteVerbose("About to publish dacpac...failed see previous error(s)");
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(ScriptSavePath))
+                {
+                    SaveDeployScript();
+                }
+
+                Deploy();
+
+                WriteVerbose("About to publish dacpac...Complete");
+            }
+            catch (Exception e)
             {
-                SaveDeployScript();
+                var ex = e;
+                while (ex.InnerException != null)
+                {
+                    WriteError(new ErrorRecord(ex.InnerException, "DacFx Error", ErrorCategory.NotSpecified, this));
+                    ex = ex.InnerException;
+                }
+
+                WriteVerbose(_messages.ToString());
+                _messages.Clear();
+                throw;
             }
-
-            Deploy();
-
-            WriteVerbose("About to publish dacpac...Complete");
-
         }
 
         private void SaveDeployScript()
