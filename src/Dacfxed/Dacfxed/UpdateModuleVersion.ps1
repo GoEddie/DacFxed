@@ -16,7 +16,7 @@ function Set-PsdFile {
 	New-Item -ItemType Directory -Path (Join-Path $destinationPath "bin\dll") -Force | Out-Null
 	New-Item -ItemType Directory -Path (Join-Path (Join-Path $destinationPath "bin\dll") "Extensions") -Force | Out-Null
 
-"DacFxed.dll", "DacFxed.psd1", "DacFxedProxy.dll", "DacFxLoadProxy.dll", "Microsoft.Management.Infrastructure.dll", "Microsoft.VisualStudio.Data.Tools.Package.dll" | foreach-object($_) {
+"DacFxed.dll", "DacFxed.psd1", "DacFxedProxy.dll", "DacFxLoadProxy.dll", "Microsoft.Management.Infrastructure.dll", "Microsoft.VisualStudio.Data.Tools.Package.dll", "DacFxed.dll-Help.xml" | foreach-object($_) {
 		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path $destinationPath $_)
 } 
 
@@ -26,3 +26,4 @@ function Set-PsdFile {
 
 
 Set-PsdFile 
+
