@@ -3,7 +3,7 @@
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
 
-Start-Process -Wait -FilePath powershell.exe "$($root)\Deploy\Setup.ps1 TedBert"
+#Start-Process -Wait -FilePath powershell.exe "$($root)\Deploy\Setup.ps1 TedBert"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
@@ -11,7 +11,10 @@ Start-Process -Wait -FilePath powershell.exe "$($root)\..\DacFxed\DacFxed\Update
 
 Write-Host "done the version stuff $($LASTEXITCODE)"
 
-cp -Path "$($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose
+cp -Path "$($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force
+
+ ls "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed"
+ls  "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules"
 
 Write-Host "done copying...$($LASTEXITCODE)"
 
