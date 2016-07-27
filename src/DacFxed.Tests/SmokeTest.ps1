@@ -13,8 +13,13 @@ Write-Host "done the version stuff $($LASTEXITCODE)"
 
 cp -Path "$($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force
 
- ls "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed"
+ls "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed"
+Write-Host "ls 1"
 ls  "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules"
+Write-Host "ls 2"
+ls C:\Users\buildguest\Documents\WindowsPowerShell\Modules -Recurse
+Write-Host "ls 3"
+
 
 Write-Host "done copying...$($LASTEXITCODE)"
 
