@@ -17,11 +17,11 @@ function Set-PsdFile {
 	New-Item -ItemType Directory -Path (Join-Path (Join-Path $destinationPath "bin\dll") "Extensions") -Force | Out-Null
 
 "DacFxed.dll", "DacFxed.psd1", "DacFxedProxy.dll", "DacFxLoadProxy.dll", "Microsoft.Management.Infrastructure.dll", "Microsoft.VisualStudio.Data.Tools.Package.dll", "DacFxed.dll-Help.xml" | foreach-object($_) {
-		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path $destinationPath $_)
+		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path $destinationPath $_) -Verbose
 } 
 
 "Microsoft.Data.Tools.Schema.Sql.dll", "Microsoft.Data.Tools.Utilities.dll", "Microsoft.SqlServer.Dac.dll", "Microsoft.SqlServer.Dac.Extensions.dll", "Microsoft.SqlServer.TransactSql.ScriptDom.dll", "Microsoft.SqlServer.Types.dll" | foreach-object($_) {
-		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path(Join-Path $destinationPath "bin\dll") $_)
+		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path(Join-Path $destinationPath "bin\dll") $_) -Verbose
 } 
 
 
