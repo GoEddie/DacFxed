@@ -1,4 +1,4 @@
-﻿param([string]$newVersion)
+﻿param([string]$newVersion, [string]$sourceDir)
 
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
@@ -7,7 +7,7 @@ Write-Host "root: $($root)"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
-Start-Process -Wait -FilePath powershell.exe "$($root)\..\DacFxed\DacFxed\UpdateModuleVersion.ps1 1.9.$($newVersion) $($root)\..\DacFxed\DacFxed\bin\Release $($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)"
+Start-Process -Wait -FilePath powershell.exe "$($root)\..\DacFxed\DacFxed\UpdateModuleVersion.ps1 1.9.$($newVersion) $($sourceDir) $($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)"
 
 Write-Host "done the version stuff $($LASTEXITCODE)"
 
