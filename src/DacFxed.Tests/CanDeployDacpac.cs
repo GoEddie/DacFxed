@@ -12,8 +12,10 @@ namespace DacFxed.Tests
         
         public void Init()
         {
+            Console.WriteLine("CanDeployDacpac.Init...");
             //Get a clean sqllocaldb instance...
             RunWithNotification("powershell", TestContext.CurrentContext.TestDirectory + "\\Deploy\\Setup.ps1 DacFxed");
+            Console.WriteLine("CanDeployDacpac.Init...Setup.ps1 complete");
 
             try
             {
@@ -24,7 +26,9 @@ namespace DacFxed.Tests
                     con.Open();
                     var cmd = con.CreateCommand();
                     cmd.CommandText = "drop database Eddie";
+                    Console.WriteLine("CanDeployDacpac.Init...Dropping Database");
                     cmd.ExecuteNonQuery();
+                    Console.WriteLine("CanDeployDacpac.Init...Dropping Database...Done");
                 }
             }
             catch (Exception)
@@ -39,7 +43,7 @@ namespace DacFxed.Tests
 
             Init();
 
-            
+            Console.WriteLine("CanDeployDacpac.Using_PublishProfile...");
 
             var profilePath =  Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "WindowsPowerShell\\Modules\\DacFxed");
@@ -48,8 +52,8 @@ namespace DacFxed.Tests
                              GetFullPath("..\\..\\..\\DacFxed\\DacFxed\\bin\\debug\\") + " " + profilePath;
 
             RunWithNotification("powershell", moduleArgs);
+            Console.WriteLine("CanDeployDacpac.Using_PublishProfile...UpdateModuleVersion...Done");
 
-            
 
             var args = TestContext.CurrentContext.TestDirectory + "\\Deploy\\Deploy.ps1 " +
                        GetFullPath(TestContext.CurrentContext.TestDirectory +
@@ -60,6 +64,7 @@ namespace DacFxed.Tests
                        Path.Combine(GetFullPath(TestContext.CurrentContext.TestDirectory + "..\\..\\..\\..\\DacFxed\\DacFxed\\bin\\debug\\"), "*.*");
 
             RunWithNotification("powershell",args);
+            Console.WriteLine("CanDeployDacpac.Using_PublishProfile...Deploy...Done");
 
             using (var con = new SqlConnection("server=(localdb)\\DacFxed;initial catalog=Eddie;integrated security=sspi;"))
             {
