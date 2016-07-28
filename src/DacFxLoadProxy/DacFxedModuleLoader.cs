@@ -36,6 +36,7 @@ namespace DacFxLoadProxy
 
             foreach (var source in extensionSources)
             {
+                Message.Invoke(this, $"Getting extensions from directory: {source}");
                 CopyDir(source, extensionsDir);
             }
 
