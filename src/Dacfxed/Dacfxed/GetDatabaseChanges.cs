@@ -8,15 +8,28 @@ using DacFxLoadProxy;
 
 namespace DacFxed
 {
+    /// <summary>
+    /// <para type="synopsis">Get a list of differences between a dacpac and a database</para>
+    /// <para type="description">Compares a dacpac to a database and returns a list of changes that need to be made to the database to get the database in sync with the dacpac. This is the XML deployment report returned by the DacFx.</para>
+    /// </summary>
     [Cmdlet(VerbsCommon.Get, "DatabaseChanges")]
     public class GetDatabaseChanges : Cmdlet
     {
+        /// <summary>
+        /// <para type="description">The path to the dacpac to deploy</para>
+        /// </summary>
         [Parameter(ParameterSetName = "GetDatabaseChanges", Mandatory = true, ValueFromPipeline = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The path of the dacpac to check against the database")]
         public string DacpacPath { get; set; }
 
+        /// <summary>
+        /// <para type="description">The path to the publish profile. A publish profile contains lots of useful info like database name and any one of the hundreds of config options for deploying. If you do not have a publish profile use New-PublishProfile to generate a template that you can modify</para>
+        /// </summary>
         [Parameter(ParameterSetName = "GetDatabaseChanges", Mandatory = true, ValueFromPipeline = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The path of the publish profile. To generate a new publish profile use New-PublishProfile")]
         public string PublishProfilePath { get; set; }
 
+        /// <summary>
+        /// a semi-colon separated list of directories you want to load extensions from, if you have multiple you can put them under one "Extensions" folder and point to that - if you do have write access to program files then you can just write to the normal extensions paths.
+        /// </summary>
         [Parameter(ParameterSetName = "GetDatabaseChanges", Mandatory = false, ValueFromPipeline = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If you reference a deployment contributor from your publish profile then use this to tell the DacFx where to load them from. To pass multiple paths use a semi-colon seperated list")]
         public string DacFxExtensionsPath { get; set; }
 

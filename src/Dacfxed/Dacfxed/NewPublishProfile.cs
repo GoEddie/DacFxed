@@ -5,6 +5,9 @@ namespace DacFxed
 {
     /// <summary>
     /// <para type="synopsis">The New-PublishProfile CmdLet generates a standard publish profile xml file that can be used by the DacFx (this and everything else) to control the deployment of your dacpac</para>
+    /// <para type="description">This generates a standard template XML which is enough to dpeloy a dacpac but it is highly recommended that you add additional options to the publish profile. If you use Visual Studio you can open a publish.xml file and use the ui to edit the file (right click on an SSDT project, choose "Publish" then "Load Profile" and load your profile or create a new one. Once you have loaded it in Visual Studio, clicking advanced shows you the list of options available to you.</para>
+    /// <para type="description">For a full list of options that you can add to the profile, google "sqlcmd.exe command line switches" and for each option in the format /p:Option=Value create a element called &lt;Option&gt;Value&lt;/Option&gt;</para>
+    /// 
     /// </summary>
 
     [Cmdlet(VerbsCommon.New, "PublishProfile")]

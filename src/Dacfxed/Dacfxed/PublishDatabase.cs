@@ -31,7 +31,7 @@ namespace DacFxed
         public string PublishProfilePath { get; set; }
 
         /// <summary>
-        /// <para type="description">The path where you would like to save a copy of the deployment script to. The way this works is that we do a compare from the dacpac to the database, generate a script that will likely be used to upgrade the database but we do a separate compare/deploy for the actual deploy. The reason is that we want tp save the script but not run it manually. If someone edits the database between comparing and deploying then it could be different to the actual script run</para>
+        /// <para type="description">The directory where you would like to save a copy of the deployment script to. The way this works is that we do a compare from the dacpac to the database, generate a script that will likely be used to upgrade the database but we do a separate compare/deploy for the actual deploy. The reason is that we want tp save the script but not run it manually. If someone edits the database between comparing and deploying then it could be different to the actual script run</para>
         /// </summary>
         [Parameter(ParameterSetName = "PublishDatabase", Mandatory = false, ValueFromPipeline = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If this is specified then a copy of the script used to deploy the changes is copied to this location")]
         public string ScriptSavePath { get; set; }
