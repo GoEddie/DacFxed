@@ -1,30 +1,36 @@
 ﻿param([string]$newVersion, [string]$sourceDir)
 
-function Start-ProcessWithLogging{
-    param([string]$file, [string]$args)
+function Setup-LocalDb{
+    param([string]$instanceName, [string]$version = "12.0" )
 
-$pinfo = New-Object System.Diagnostics.ProcessStartInfo
-$pinfo.FileName = $file
-$pinfo.RedirectStandardError = $true
-$pinfo.RedirectStandardOutput = $true
-$pinfo.UseShellExecute = $false
-$pinfo.Arguments = $args
-$p = New-Object System.Diagnostics.Process
-$p.StartInfo = $pinfo
-$p.Start() | Out-Null
-$p.WaitForExit()
-$stdout = $p.StandardOutput.ReadToEnd()
-$stderr = $p.StandardError.ReadToEnd()
-Write-Host "stdout: $stdout"
-Write-Host "stderr: $stderr"
-Write-Host "exit code: " + $p.ExitCode
+if((sqllocaldb i | findstr "instanceName") -eq $instanceName)
+{
+    sqllocaldb stop $instanceName
+    sqllocaldb delete $instanceName
+}
+Write-Host $version
+sqllocaldb create $instanceName "$($version)" -s
+sqllocaldb start $instanceName
+
+}
+
+function Do-Deploy{
+    param([string]$dacpacPath, [string]$publicProfilePath, [string]$module )
+Remove-Module DacFxed | Out-Null
+
+$modulePath =(Join-Path ($env:PSModulePath.Split(";")[0]) DacFxed)
+
+Import-Module DacFxed
+
+Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose
+
 
 }
 
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
-
-Start-ProcessWithLogging "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Setup.ps1 TedBert"
+Setup-LocalDb "TedBert"
+#Start-ProcessWithLogging "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Setup.ps1 TedBert"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
@@ -46,7 +52,8 @@ Write-Host "done copying...$($LASTEXITCODE)"
 
 Get-Module DacFxedS
 
-Start-ProcessWithLogging  "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
+#Start-ProcessWithLogging  "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
+Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\TestDacPac\TestDacPac.publish.xml" "www"
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
