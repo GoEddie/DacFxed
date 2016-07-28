@@ -81,10 +81,8 @@ namespace DacFxed
                     DacFxExtensionsPath = DacFxExtensionsPath.Trim(new[] { ' ', ';' });
                 }
 
-                _dacFxed = new DacFxedModuleLoader(!string.IsNullOrEmpty(DacFxExtensionsPath) ? DacFxExtensionsPath.Split(';').ToList() : new List<string>());
-
-                _dacFxed.Message += (sender, message) => _messages.AppendLine(message);
-
+                _dacFxed = new DacFxedModuleLoader(!string.IsNullOrEmpty(DacFxExtensionsPath) ? DacFxExtensionsPath.Split(';').ToList() : new List<string>(), (sender, message) => _messages.AppendLine(message));
+                
                 _dacFxed.LoadDacpac(DacpacPath, PublishProfilePath);
             }
             catch (Exception x)

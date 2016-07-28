@@ -14,7 +14,9 @@ namespace DacFxLoadProxy
     {
         private readonly Dictionary<string, Assembly> _dacAssemblies = new Dictionary<string, Assembly>();
         private readonly string[] _dlls = new[] { "Microsoft.SqlServer.Dac.dll", "Microsoft.Data.Tools.Schema.Sql.dll", "Microsoft.Data.Tools.Utilities.dll", "Microsoft.SqlServer.Dac.Extensions.dll", "Microsoft.SqlServer.TransactSql.ScriptDom.dll", "Microsoft.SqlServer.Types.dll" };
-        public DacFxedModuleLoader(IList<string> extensionSources, string privateLocalPath = null)
+
+        
+        public DacFxedModuleLoader(IList<string> extensionSources, MessageArgs messages, string privateLocalPath = null)
         {
             if (string.IsNullOrEmpty(privateLocalPath))
             {
@@ -33,6 +35,8 @@ namespace DacFxLoadProxy
                 Directory.CreateDirectory(extensionsDir);
 
             }
+
+            Message += messages;
 
             if(extensionsDir.Length == 0)
                 Message.Invoke(this, "There are no extensions to use");
