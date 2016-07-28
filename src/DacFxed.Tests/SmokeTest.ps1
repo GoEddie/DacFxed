@@ -7,11 +7,11 @@ Write-Host "root: $($root)"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
-Start-Process -Wait -FilePath powershell.exe "$($root)\..\DacFxed\DacFxed\UpdateModuleVersion.ps1 1.9.$($newVersion) $($sourceDir) $($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)"
+#Start-Process -Wait -FilePath powershell.exe "$($root)\..\DacFxed\DacFxed\UpdateModuleVersion.ps1 1.9.$($newVersion) $($sourceDir) $($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)"
 
 Write-Host "done the version stuff $($LASTEXITCODE)"
 
-cp -Path "$($root)\..\DacFxed\DacFxed\bin\Deploy\DacFxed\1.9.$($newVersion)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force
+cp -Path "$($sourceDir)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force -Recurse
 
 ls "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed"
 Write-Host "ls 1"
