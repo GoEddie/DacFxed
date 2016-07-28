@@ -99,9 +99,12 @@ namespace DacFxLoadProxy
         
         private Assembly ResolveAssemblies(object sender, ResolveEventArgs args)
         {
+            Message.Invoke(this, $"Attempting to Resolve Assembly {args.Name}");
+
+
             if (_dacAssemblies.ContainsKey(args.Name))
             {
-                Message.Invoke(this, $"Loading Assembly {args.Name}");
+                Message.Invoke(this, $"Resolving Assembly {args.Name}");
                 return _dacAssemblies[args.Name];
             }
 
