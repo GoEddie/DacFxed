@@ -1,5 +1,26 @@
 ﻿param([string]$newVersion, [string]$sourceDir)
 
+function Start-ProcessWithLogging{
+    param([string]$file, [string]$args)
+
+$pinfo = New-Object System.Diagnostics.ProcessStartInfo
+$pinfo.FileName = $file
+$pinfo.RedirectStandardError = $true
+$pinfo.RedirectStandardOutput = $true
+$pinfo.UseShellExecute = $false
+$pinfo.Arguments = $args
+$p = New-Object System.Diagnostics.Process
+$p.StartInfo = $pinfo
+$p.Start() | Out-Null
+$p.WaitForExit()
+$stdout = $p.StandardOutput.ReadToEnd()
+$stderr = $p.StandardError.ReadToEnd()
+Write-Host "stdout: $stdout"
+Write-Host "stderr: $stderr"
+Write-Host "exit code: " + $p.ExitCode
+
+}
+
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
 
@@ -23,10 +44,9 @@ Write-Host "ls 3"
 
 Write-Host "done copying...$($LASTEXITCODE)"
 
-Get-Module -ListAvailable
+Get-Module DacFxedS
 
-Start-Process -Wait -FilePath powershell.exe "$($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
-
+Start-ProcessWithLogging  "powershell.exe" "$($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
