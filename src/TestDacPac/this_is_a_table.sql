@@ -2,3 +2,5 @@
 (
 	[Id] int not null primary key
 )
+go
+create login a with password = 'ssss'

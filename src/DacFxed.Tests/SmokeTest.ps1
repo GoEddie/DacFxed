@@ -16,13 +16,14 @@ sqllocaldb start $instanceName
 
 function Do-Deploy{
     param([string]$dacpacPath, [string]$publicProfilePath, [string]$module )
-Remove-Module DacFxed | Out-Null
+
+Remove-Module DacFxed 2> $null
 
 $modulePath =(Join-Path ($env:PSModulePath.Split(";")[0]) DacFxed)
 
 Import-Module DacFxed
 
-Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose
+Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose -DacFxExtensionsPath "$($root)\..\TestDacPac\bin\Release\extensions"
 
 
 }

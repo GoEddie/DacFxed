@@ -57,6 +57,8 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="extensions" />
+    <Folder Include="extensions\agile-sql-club" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="this_is_a_table.sql" />

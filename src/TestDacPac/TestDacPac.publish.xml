@@ -8,5 +8,8 @@
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
+    <AdditionalDeploymentContributors>AgileSqlClub.DeploymentFilterContributor</AdditionalDeploymentContributors>
+    <AdditionalDeploymentContributorArguments>SqlPackageFilter=IgnoreSecurity</AdditionalDeploymentContributorArguments>
+    
   </PropertyGroup>
 </Project>
