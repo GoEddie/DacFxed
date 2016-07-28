@@ -24,7 +24,7 @@ Write-Host "exit code: " + $p.ExitCode
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
 
-Start-ProcessWithLogging "powershell.exe" "$($root)\Deploy\Setup.ps1 TedBert"
+Start-ProcessWithLogging "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Setup.ps1 TedBert"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
@@ -46,7 +46,7 @@ Write-Host "done copying...$($LASTEXITCODE)"
 
 Get-Module DacFxedS
 
-Start-ProcessWithLogging  "powershell.exe" "$($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
+Start-ProcessWithLogging  "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
