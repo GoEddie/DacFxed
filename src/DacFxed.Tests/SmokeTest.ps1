@@ -24,7 +24,7 @@ Write-Host "exit code: " + $p.ExitCode
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 Write-Host "root: $($root)"
 
-#Start-Process -Wait -FilePath powershell.exe "$($root)\Deploy\Setup.ps1 TedBert"
+Start-ProcessWithLogging "powershell.exe" "$($root)\Deploy\Setup.ps1 TedBert"
 
 Write-Host "started tedbert....$($LASTEXITCODE)"
 
