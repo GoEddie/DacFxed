@@ -131,8 +131,11 @@ namespace DacFxLoadProxy
 
             foreach (var path in Directory.GetFiles(source, "*.*", SearchOption.AllDirectories))
             {
-                if(!File.Exists(path.Replace(source, target)))
+                if (!File.Exists(path.Replace(source, target)))
+                {
                     File.Copy(path, path.Replace(source, target), true);
+                    Message.Invoke(this, $"Extension: COpying {path} to {path.Replace(source, target)}");
+                }
             }
         }
     }
