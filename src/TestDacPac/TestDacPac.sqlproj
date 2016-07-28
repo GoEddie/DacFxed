@@ -70,5 +70,9 @@
     <None Include="TedBert.publish.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="extensions\agile-sql-club\AgileSqlClub.SqlPackageFilter.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="extensions\agile-sql-club\AgileSqlClub.SqlPackageFilter.pdb" />
   </ItemGroup>
 </Project>

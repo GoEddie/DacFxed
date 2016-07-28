@@ -79,7 +79,7 @@ namespace DacFxed
             }
             catch (Exception x)
             {
-                _messages.AppendLine($"Fatal Error lodaing the dacpac: {x.Message}");
+                _messages.AppendLine($"Fatal Error loading the dacpac: {x.Message}");
                 _error = true;
             }
         }
