@@ -112,6 +112,7 @@ namespace DacFxLoadProxy
         {
             foreach (var dll in _dlls)
             {
+                Message.Invoke(this, $"Loading Assembly: {Path.Combine(privateLocalPath, dll)}");
                 var assembly = System.Reflection.Assembly.LoadFile( Path.Combine(privateLocalPath, dll));
                 _dacAssemblies[assembly.FullName] = assembly;
             }
