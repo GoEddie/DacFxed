@@ -113,6 +113,12 @@ namespace DacFxLoadProxy
 
         private void LoadAssemblies(string privateLocalPath)
         {
+            foreach (var ass in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Message.Invoke(this, $"Already have loaded: {ass.FullName}");
+            }
+            
+
             foreach (var dll in _dlls)
             {
                 Message.Invoke(this, $"Loading Assembly: {Path.Combine(privateLocalPath, dll)}");
