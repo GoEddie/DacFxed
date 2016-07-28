@@ -22,6 +22,7 @@ Remove-Module DacFxed 2> $null
 $modulePath =(Join-Path ($env:PSModulePath.Split(";")[0]) DacFxed)
 
 Import-Module DacFxed
+Write-Host "extensions dir: $($root)\..\TestDacPac\bin\Release\extensions"
 
 Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose -DacFxExtensionsPath "$($root)\..\TestDacPac\bin\Release\extensions"
 
