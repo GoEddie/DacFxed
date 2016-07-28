@@ -34,6 +34,9 @@ namespace DacFxLoadProxy
 
             }
 
+            if(extensionsDir.Length == 0)
+                Message.Invoke(this, "There are no extensions to use");
+
             foreach (var source in extensionSources)
             {
                 Message.Invoke(this, $"Getting extensions from directory: {source}");

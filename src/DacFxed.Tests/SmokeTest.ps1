@@ -53,10 +53,15 @@ Write-Host "ls 3"
 
 Write-Host "done copying...$($LASTEXITCODE)"
 
-Get-Module DacFxedS
+Get-Module DacFxed
 
 #Start-ProcessWithLogging  "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
 Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\TestDacPac\bin\Release\TestDacPac.publish.xml" "www"
+
+
+ls C:\Users\buildguest\Documents\WindowsPowerShell\Modules -Recurse
+Write-Host "ls 4"
+
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
