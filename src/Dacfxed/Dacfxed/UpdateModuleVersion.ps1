@@ -20,7 +20,7 @@ function Set-PsdFile {
 		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path $destinationPath $_) -Verbose
 } 
 
-"Microsoft.Data.Tools.Schema.Sql.dll", "Microsoft.Data.Tools.Utilities.dll", "Microsoft.SqlServer.Dac.dll", "Microsoft.SqlServer.Dac.Extensions.dll", "Microsoft.SqlServer.TransactSql.ScriptDom.dll", "Microsoft.SqlServer.Types.dll" | foreach-object($_) {
+"Microsoft.Data.Tools.Schema.Sql.dll", "DacFxedProxy.dll","Microsoft.Data.Tools.Utilities.dll", "Microsoft.SqlServer.Dac.dll", "Microsoft.SqlServer.Dac.Extensions.dll", "Microsoft.SqlServer.TransactSql.ScriptDom.dll", "Microsoft.SqlServer.Types.dll" | foreach-object($_) {
 		Copy-Item -Path (Join-Path $sourcePath $_) -Destination (Join-Path(Join-Path $destinationPath "bin\dll") $_) -Verbose
 } 
 
