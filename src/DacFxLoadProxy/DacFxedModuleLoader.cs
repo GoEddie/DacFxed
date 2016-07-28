@@ -100,7 +100,10 @@ namespace DacFxLoadProxy
         private Assembly ResolveAssemblies(object sender, ResolveEventArgs args)
         {
             if (_dacAssemblies.ContainsKey(args.Name))
+            {
+                Message.Invoke(this, $"Loading Assembly {args.Name}");
                 return _dacAssemblies[args.Name];
+            }
 
             return null;
         }
@@ -134,7 +137,7 @@ namespace DacFxLoadProxy
                 if (!File.Exists(path.Replace(source, target)))
                 {
                     File.Copy(path, path.Replace(source, target), true);
-                    Message.Invoke(this, $"Extension: COpying {path} to {path.Replace(source, target)}");
+                    Message.Invoke(this, $"Extension: Copying {path} to {path.Replace(source, target)}");
                 }
             }
         }
