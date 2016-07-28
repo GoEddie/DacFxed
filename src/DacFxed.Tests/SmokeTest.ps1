@@ -53,7 +53,7 @@ Write-Host "done copying...$($LASTEXITCODE)"
 Get-Module DacFxedS
 
 #Start-ProcessWithLogging  "powershell.exe" "-ExecutionPolicy RemoteSigned -File $($root)\Deploy\Deploy.ps1 $($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac abc -verbose"
-Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\TestDacPac\TestDacPac.publish.xml" "www"
+Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\TestDacPac\bin\Release\TestDacPac.publish.xml" "www"
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
