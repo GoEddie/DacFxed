@@ -15,7 +15,9 @@ namespace DacFxLoadProxy
         private readonly Dictionary<string, Assembly> _dacAssemblies = new Dictionary<string, Assembly>();
         private readonly string[] _dlls = new[] { "Microsoft.SqlServer.Dac.dll", "Microsoft.Data.Tools.Schema.Sql.dll", "Microsoft.Data.Tools.Utilities.dll", "Microsoft.SqlServer.Dac.Extensions.dll", "Microsoft.SqlServer.TransactSql.ScriptDom.dll", "Microsoft.SqlServer.Types.dll" };
 
-        
+
+        private string _localPath;
+
         public DacFxedModuleLoader(IList<string> extensionSources, MessageArgs messages, string privateLocalPath = null)
         {
             if (string.IsNullOrEmpty(privateLocalPath))
@@ -48,6 +50,7 @@ namespace DacFxLoadProxy
             }
 
             LoadAssemblies(privateLocalPath);
+            _localPath = privateLocalPath;
 
             AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += ResolveAssemblies;
             AppDomain.CurrentDomain.AssemblyResolve += ResolveAssemblies;
@@ -70,6 +73,8 @@ namespace DacFxLoadProxy
         public void Deploy()
         {
             _dacFxedProxy.Deploy();
+
+            LoadAssemblies(_localPath);
         }
 
         public string GenerateDeployScript()
@@ -101,7 +106,6 @@ namespace DacFxLoadProxy
         {
             Message.Invoke(this, $"Attempting to Resolve Assembly {args.Name}");
 
-
             if (_dacAssemblies.ContainsKey(args.Name))
             {
                 Message.Invoke(this, $"Resolving Assembly {args.Name}");
@@ -117,7 +121,6 @@ namespace DacFxLoadProxy
             {
                 Message.Invoke(this, $"Already have loaded: {ass.FullName}");
             }
-            
 
             foreach (var dll in _dlls)
             {
