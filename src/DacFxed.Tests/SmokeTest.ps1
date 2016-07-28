@@ -23,8 +23,9 @@ $modulePath =(Join-Path ($env:PSModulePath.Split(";")[0]) DacFxed)
 
 Import-Module DacFxed
 Write-Host "extensions dir: $($root)\..\TestDacPac\bin\Release\extensions"
+ls "$($root)\..\TestDacPac\bin\Release\extensions"
 
-Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose -DacFxExtensionsPath "$($root)\..\TestDacPac\bin\Release\extensions"
+Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose -DacFxExtensionsPath "$($root)\..\TestDacPac\bin\Release\extensions\agile-sql-club"
 
 
 }
