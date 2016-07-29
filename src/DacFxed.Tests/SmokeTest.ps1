@@ -31,11 +31,6 @@ Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath 
 }
 
 
-function Deploy-PackagePublish{
-
-    cp -Path "$($root)\..\DacFxed.Tests\Deploy\PackageManagement" -Destination  "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\PackgeManagement" -Verbose -Force -Recurse
-
-}
 
 $root = [System.IO.Path]::GetDirectoryName($myInvocation.MyCommand.Definition)
 
@@ -58,6 +53,5 @@ Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\Te
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
-Deploy-PackagePublish
 Import-Module PackageManagement
 Publish-Module
