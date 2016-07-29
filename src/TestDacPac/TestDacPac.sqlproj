@@ -73,9 +73,5 @@
     <None Include="extensions\agile-sql-club\AgileSqlClub.SqlPackageFilter.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="extensions\agile-sql-club\AgileSqlClub.SqlPackageFilter.pdb" />
-    <None Include="extensions\agile-sql-club\Microsoft.SqlServer.Dac.Extensions.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

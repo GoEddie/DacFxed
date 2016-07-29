@@ -36,6 +36,7 @@ namespace DacFxed
         
         bool _error = false;
         private readonly StringBuilder _messages = new StringBuilder();
+        private readonly  StringBuilder _debugMessages = new StringBuilder();
 
         protected override void BeginProcessing()
         {
@@ -72,7 +73,7 @@ namespace DacFxed
                     DacFxExtensionsPath = DacFxExtensionsPath.Trim(new[] {' ', ';'});
                 }
 
-                _dacFxed = new DacFxedModuleLoader(!string.IsNullOrEmpty(DacFxExtensionsPath) ?  DacFxExtensionsPath.Split(';').ToList() : new List<string>(), (sender, message) => _messages.AppendLine(message));
+                _dacFxed = new DacFxedModuleLoader(!string.IsNullOrEmpty(DacFxExtensionsPath) ?  DacFxExtensionsPath.Split(';').ToList() : new List<string>(), (sender, message) => _messages.AppendLine(message), (sender, message) => _debugMessages.AppendLine(message));
                 
                 _dacFxed.LoadDacpac(DacpacPath, PublishProfilePath);
             }
@@ -104,6 +105,7 @@ namespace DacFxed
         protected override void EndProcessing()
         {
             WriteVerbose(_messages.ToString());
+            WriteDebug(_debugMessages.ToString());
         }
 
     }

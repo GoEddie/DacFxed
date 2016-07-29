@@ -18,7 +18,7 @@ namespace DacFxLoadProxy
 
         private string _localPath;
 
-        public DacFxedModuleLoader(IList<string> extensionSources, MessageArgs messages, string privateLocalPath = null)
+        public DacFxedModuleLoader(IList<string> extensionSources, MessageArgs messages, MessageArgs debugs, string privateLocalPath = null)
         {
             if (string.IsNullOrEmpty(privateLocalPath))
             {
@@ -60,6 +60,7 @@ namespace DacFxLoadProxy
         public delegate void MessageArgs(object sender, string message);
 
         public event MessageArgs Message = delegate { };
+        public event MessageArgs Debug = delegate { };
 
         private Proxy _dacFxedProxy;
 
@@ -104,11 +105,11 @@ namespace DacFxLoadProxy
         
         private Assembly ResolveAssemblies(object sender, ResolveEventArgs args)
         {
-            Message.Invoke(this, $"Attempting to Resolve Assembly {args.Name}");
+            Debug.Invoke(this, $"Attempting to Resolve Assembly {args.Name}");
 
             if (_dacAssemblies.ContainsKey(args.Name))
             {
-                Message.Invoke(this, $"Resolving Assembly {args.Name}");
+                Debug.Invoke(this, $"Resolving Assembly {args.Name}");
                 return _dacAssemblies[args.Name];
             }
 
@@ -119,12 +120,12 @@ namespace DacFxLoadProxy
         {
             foreach (var ass in AppDomain.CurrentDomain.GetAssemblies())
             {
-                Message.Invoke(this, $"Already have loaded: {ass.FullName}");
+                Debug.Invoke(this, $"Already have loaded: {ass.FullName}");
             }
 
             foreach (var dll in _dlls)
             {
-                Message.Invoke(this, $"Loading Assembly: {Path.Combine(privateLocalPath, dll)}");
+                Debug.Invoke(this, $"Loading Assembly: {Path.Combine(privateLocalPath, dll)}");
                 var assembly = System.Reflection.Assembly.LoadFile( Path.Combine(privateLocalPath, dll));
                 _dacAssemblies[assembly.FullName] = assembly;
             }
