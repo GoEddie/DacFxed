@@ -9,7 +9,7 @@
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <AllowIncompatiblePlatform>True</AllowIncompatiblePlatform>
     <AdditionalDeploymentContributors>AgileSqlClub.DeploymentFilterContributor</AdditionalDeploymentContributors>
-    <AdditionalDeploymentContributorArguments>SqlPackageLogging=Info;SqlPackageFilter=IgnoreSecurity</AdditionalDeploymentContributorArguments>
+    <AdditionalDeploymentContributorArguments>SqlPackageLogging=Info;SqlPackageFilter=IgnoreSecurity;</AdditionalDeploymentContributorArguments>
     
   </PropertyGroup>
 </Project>
