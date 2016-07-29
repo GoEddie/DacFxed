@@ -58,5 +58,6 @@ Do-Deploy "$($root)\..\TestDacPac\bin\Release\TestDacPac.dacpac" "$($root)\..\Te
 
 Write-Host "all done??? $($LASTEXITCODE)"
 
+Deploy-PackagePublish
 
 Publish-Module
