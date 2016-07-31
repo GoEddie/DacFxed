@@ -39,7 +39,7 @@ Write-Host "started tedbert....$($LASTEXITCODE)"
 
 Write-Host "done the version stuff $($LASTEXITCODE)"
 
-cp -Path "$($sourceDir)" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force -Recurse
+cp -Path "$($sourceDir)\*.*" -Destination "$($env:USERPROFILE)\Documents\WindowsPowershell\Modules\DacFxed" -Verbose -Force -Recurse
 
 
 Write-Host "done copying...$($LASTEXITCODE)"
