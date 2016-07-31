@@ -27,7 +27,6 @@ ls "$($root)\..\TestDacPac\bin\Release\extensions" -recurse
 
 Publish-Database -DacpacPath $dacpacPath -PublishProfilePath $publicProfilePath -verbose -DacFxExtensionsPath "$($root)\..\TestDacPac\bin\Release\extensions\"
 
-
 }
 
 
