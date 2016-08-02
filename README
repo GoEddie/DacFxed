@@ -1,0 +1,12 @@
+A wrapper to publish dacpac's to databases from Powershell.
+
+For the packaged version see:
+
+https://www.powershellgallery.com/packages/DacFxed
+
+To install do "Install-Module -Name DacFxed -Scope User -Force" - it is important to install it in the user scope otherwise you will need to run the import as admin when using new deployment contributors which goes against the whole point of this.
+
+For more info see:
+
+https://the.agilesql.club/blogs/Ed-Elliott/DacFxed-Nugetized-DacFx-Powershell-Wrapper
+
