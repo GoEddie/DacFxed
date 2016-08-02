@@ -15,6 +15,13 @@ namespace DacFxed
     /// <para type="description">One of the main features of the DacFx is that when deploying your dacpac's you have the ability to use deployment contributors which is awesome, however these have to be installed into the visual studio or sql server directory under program files which people may not have access to when deploying dacpacs. This module works around that and lets you specify the folder from where you want to load extensions.</para>
     ///<para type="description">It will also hopefully stop people from having to write the same boilerpoint code to deploy a dacpac</para>
     /// </summary>
+    /// <example>
+    /// <code>
+    /// PS> Publish-Database -DacpacPath $DacpacPath -PublishProfilePath $PublishProfilePath
+    /// PS> Publish-Database -DacpacPath $DacpacPath -PublishProfilePath $PublishProfilePath -SaveScriptPath $directoryToCopyDeployScript
+    /// PS> Publish-Database -DacpacPath $DacpacPath -PublishProfilePath $PublishProfilePath -DacFxExtensionPath $semiColonSeparatedListOfPathsToFindContributors
+    /// </code>
+    /// </example>
     [Cmdlet(VerbsData.Publish, "Database")]
     public class PublishDatabase : Cmdlet
     {
