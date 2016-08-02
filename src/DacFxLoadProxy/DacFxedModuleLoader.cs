@@ -29,8 +29,14 @@ namespace DacFxLoadProxy
                 Directory.CreateDirectory(privateLocalPath);
             }
 
-            var extensionsDir = Path.Combine(privateLocalPath, "Extensions");
+            var extensionsDir = privateLocalPath;
 
+            var dir = new DirectoryInfo(extensionsDir);
+            if (dir.Name.Equals("extensions", StringComparison.OrdinalIgnoreCase))
+            {
+                extensionsDir = Path.Combine(privateLocalPath, "Extensions");
+            }
+            
             if (!Directory.Exists(extensionsDir))
             {
                 Directory.CreateDirectory(extensionsDir);
